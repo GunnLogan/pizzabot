@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<body>
+  <div id="firstAuthor">
+
+  </div>
+  <div id="descriptions">
+
+  </div>
+</body>
+
+<script>
+
+console.log("hello1")
+
+fetch("https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=e6ef2cde327f46e3820d0344025b79fc")
+.then((response) => {
+  console.log(response)
+  return response.json()
+}).then((data) => {
+
+  // get the author of the first article
+  const allArticles = data.articles
+  const article1 = data.articles[0]
+  const author1 = article1.author // data/articles(0).author
+
+
+
+  // console.log("allArticles", allArticles)
+  // console.log("article1", article1)
+  // console.log("author1:",author1)
+
+
+
+  document.getElementById("firstAuthor").innerHtml= author1
+
+  allArticles.forEach((item) => {
+    const divElement = document.createElement("div")
+    divElement.innerHtml = item.description
+    document.getElementById("descriptions").appendChild(divElement)
+  })
+
+
+
+
+  console.log(data)
+})
+
+console.log("hello2")
+
+
+// <!-- fetch("https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=e6ef2cde327f46e3820d0344025b79fc")
+// .then((response) => {
+//   console.log(response)
+//   return response.json()
+// }).then((data.author) => {
+//   console.log(data.author=first.
+// }) -->
+// </article>
+
+
+
+</script>
